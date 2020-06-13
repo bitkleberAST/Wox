@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 
 namespace Wox.Plugin.Program
 {
@@ -16,6 +17,15 @@ namespace Wox.Plugin.Program
             InitializeComponent();
             _settings = settings;
             tbSuffixes.Text = string.Join(Settings.SuffixSeperator.ToString(), _settings.ProgramSuffixes);
+
+            this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            tbSuffixes.Focus();
+            tbSuffixes.SelectionStart = tbSuffixes.Text.Length;
+            tbSuffixes.SelectionLength = 0;
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
@@ -32,6 +42,15 @@ namespace Wox.Plugin.Program
             MessageBox.Show(msg);
 
             DialogResult = true;
+        }
+
+        private void HandleEsc(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                e.Handled = true;
+                DialogResult = false; 
+            }
         }
     }
 }
