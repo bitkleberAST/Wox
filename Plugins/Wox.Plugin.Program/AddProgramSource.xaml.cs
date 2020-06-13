@@ -1,9 +1,7 @@
 ﻿using System.Linq;
 using System.Windows;
-
+using System.Windows.Input;
 using Ookii.Dialogs.Wpf; // may be removed later https://github.com/dotnet/wpf/issues/438
-
-
 
 namespace Wox.Plugin.Program
 {
@@ -16,20 +14,27 @@ namespace Wox.Plugin.Program
         private ProgramSource _editing;
         private Settings _settings;
 
-        public AddProgramSource(PluginInitContext context, Settings settings)
+        public AddProgramSource()
         {
             InitializeComponent();
-            _context = context;
-            _settings = settings;
+            this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
             Directory.Focus();
         }
 
+        public AddProgramSource(PluginInitContext context, Settings settings)
+            : this()
+        {
+
+            _context = context;
+            _settings = settings;
+        }
+
         public AddProgramSource(ProgramSource edit, Settings settings)
+            : this()
         {
             _editing = edit;
             _settings = settings;
 
-            InitializeComponent();
             Directory.Text = _editing.Location;
         }
 
@@ -67,6 +72,15 @@ namespace Wox.Plugin.Program
 
             DialogResult = true;
             Close();
+        }
+
+        private void HandleEsc(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                e.Handled = true;
+                DialogResult = false;
+            }
         }
     }
 }

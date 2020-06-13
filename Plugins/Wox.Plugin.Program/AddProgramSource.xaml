@@ -15,7 +15,7 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Click="BrowseButton_Click" Content="{DynamicResource wox_plugin_program_browse}" 
                 HorizontalAlignment="Right" Margin="10" Height="20" Width="70"   />
-            <Button Click="ButtonAdd_OnClick"  Content="{DynamicResource wox_plugin_program_update}" 
+            <Button Click="ButtonAdd_OnClick" IsDefault="True" Content="{DynamicResource wox_plugin_program_update}" 
                 HorizontalAlignment="Right" Margin="10" Height="20" Width="70"  />
         </StackPanel>
     </StackPanel>

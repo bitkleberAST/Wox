@@ -17,15 +17,9 @@ namespace Wox.Plugin.Program
             InitializeComponent();
             _settings = settings;
             tbSuffixes.Text = string.Join(Settings.SuffixSeperator.ToString(), _settings.ProgramSuffixes);
+            tbSuffixes.Focus();
 
             this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            tbSuffixes.Focus();
-            tbSuffixes.SelectionStart = tbSuffixes.Text.Length;
-            tbSuffixes.SelectionLength = 0;
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
@@ -49,7 +43,7 @@ namespace Wox.Plugin.Program
             if (e.Key == Key.Escape)
             {
                 e.Handled = true;
-                DialogResult = false; 
+                DialogResult = false;
             }
         }
     }

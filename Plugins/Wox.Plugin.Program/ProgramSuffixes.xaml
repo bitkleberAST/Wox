@@ -7,7 +7,7 @@
                 Width="400"
                 Height="180"
         WindowStartupLocation="CenterScreen"
-             d:DesignHeight="400" d:DesignWidth="300" Loaded="Window_Loaded">
+             d:DesignHeight="400" d:DesignWidth="300">
     <StackPanel>
         <TextBlock Margin="10 10 0 0" Foreground="Gray" Text="{DynamicResource wox_plugin_program_only_index_tip}" />
         <TextBlock Margin="10 10 0 0" Foreground="Gray" Text="{DynamicResource wox_plugin_program_split_by_tip}" />
